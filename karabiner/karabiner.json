@@ -1,6 +1,20 @@
 {
     "profiles": [
         {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Maps F5 to ⌘⇧M in MS Teams or ⌘⇧A to ZOOM. F5 has an MIC symbol on recent MacOS keyboards.",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "f5" },
+                                "to": [{ "shell_command": "if [ $(ps aux | grep -v grep | grep -ci \"Microsoft Teams.app/Contents/Frameworks/Microsoft Teams Helper.app\") -gt 0 ]; then osascript -e 'activate application id \"com.microsoft.teams\"' -e 'tell application \"System Events\" to keystroke \"m\" using {command down, shift down}'; fi & if [ $(ps aux | grep -v grep | grep -ci \"zoom.us.app/Contents/Frameworks/cpthost.app/Contents/MacOS/CptHost\") -gt 0 ]; then osascript -e 'activate application id \"us.zoom.xos\"' -e 'tell application \"System Events\" to keystroke \"a\" using {command down, shift down}'; fi" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
             "devices": [
                 {
                     "identifiers": {
@@ -22,12 +36,12 @@
                             "to": [{ "key_code": "left_command" }]
                         },
                         {
-                            "from": { "key_code": "right_option" },
-                            "to": [{ "key_code": "right_command" }]
-                        },
-                        {
                             "from": { "key_code": "right_control" },
                             "to": [{ "key_code": "right_option" }]
+                        },
+                        {
+                            "from": { "key_code": "right_option" },
+                            "to": [{ "key_code": "right_command" }]
                         }
                     ]
                 },
