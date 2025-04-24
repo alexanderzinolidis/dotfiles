@@ -51,7 +51,7 @@ key-mapping.preset = 'qwerty'
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 outer.top = [{ monitor.'^built-in retina display$' = 18 }, 50]
-outer.bottom = [{ monitor.'^built-in retina display$' = 8 }, 40]
+outer.bottom = [{ monitor.'^built-in retina display$' = 8 }, 12]
 outer.left = 12
 outer.right = 12
 inner.horizontal = 12
