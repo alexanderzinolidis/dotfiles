@@ -26,6 +26,7 @@ local spaceConfigs <const> = {
   ["6"] = { icon = "", name = "Mail" },
   ["7"] = { icon = "", name = "Calendar" },
   ["8"] = { icon = "", name = "Notes" },
+  ["9"] = { icon = "", name = "Music" },
 }
 
 local function selectCurrentWorkspace(focusedWorkspaceName)

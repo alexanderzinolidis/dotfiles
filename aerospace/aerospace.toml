@@ -116,6 +116,7 @@ alt-cmd-5 = 'workspace 5' # Teams
 alt-cmd-6 = 'workspace 6' # Mail
 alt-cmd-7 = 'workspace 7' # Calendar
 alt-cmd-8 = 'workspace 8' # Notes
+alt-cmd-9 = 'workspace 9' # Music
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-cmd-shift-1 = 'move-node-to-workspace 1'
@@ -179,6 +180,16 @@ f = [
   'mode main',
   'exec-and-forget sketchybar --trigger hide_message',
 ] # Toggle between floating and tiling layout
+
+# Toggle between floating-centered and tiling layout.
+## Floating-centered needs to depend on Raycast Window Management Center Command hotkey.
+## My Raycast window management Center Command hotkey is set to `ctrl + option + cmd + C`. (`Key Code 8` = C)
+period = [
+  '''exec-and-forget aerospace layout floating && osascript -e 'tell application "System Events" to key code 8 using {control down, option down, command down}' || aerospace layout tiling''',
+  'mode main',
+  'exec-and-forget sketchybar --trigger hide_message',
+]
+
 alt-shift-semicolon = [
   'fullscreen',
   'mode main',
@@ -206,16 +217,10 @@ alt-shift-l = [
   'exec-and-forget sketchybar --trigger hide_message',
 ]
 
+# You can use "aerospace list-apps" CLI command to get IDs of running applications
+
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
-run = ['layout floating']
-
-[[on-window-detected]]
-if.app-id = 'dev.warp.Warp-Stable'
-run = ['layout floating']
-
-[[on-window-detected]]
-if.app-id = 'com.spotify.client'
 run = ['layout floating']
 
 [[on-window-detected]]
@@ -225,10 +230,6 @@ run = ['move-node-to-workspace 1']
 [[on-window-detected]]
 if.app-id = 'com.Microsoft.VSCode'
 run = ['move-node-to-workspace 2']
-
-[[on-window-detected]]
-if.app-id = 'dev.warp.Warp-Stable'
-run = ['move-node-to-workspace 3']
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
@@ -249,3 +250,7 @@ run = ['move-node-to-workspace 7']
 [[on-window-detected]]
 if.app-id = 'Notion.id'
 run = ['move-node-to-workspace 8']
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = ['move-node-to-workspace 9']
